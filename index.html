@@ -1,5 +1,13 @@
 <!doctype html>
 <html lang="de" data-theme="dark">
+    <script>
+        // Check for system color scheme preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    </script>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -15,22 +23,24 @@
             }
 
             [data-theme='dark'] {
-                --accent: #0776CA;
+                --accent: #0776ca;
                 --bg: #0b0d12;
-                --bg-2: #0f1219;
+                --bg-2: #190f0f;
                 --card: #131827;
                 --content: #e8eaf1;
                 --border: #9aa4b2;
+                --tags: #3b82f622;
                 --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
             }
 
             [data-theme='light'] {
-                --accent: #065C9C;
+                --accent: #065c9c;
                 --bg: #f5f7fb;
                 --bg-2: #f0f4f8;
                 --card: #fff;
                 --content: #111;
                 --border: #111;
+                --tags: #3b82f622;
                 --shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
             }
 
@@ -135,7 +145,9 @@
                 border-radius: var(--radius);
                 box-shadow: var(--shadow);
                 margin-bottom: 18px;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                transition:
+                    transform 0.3s ease,
+                    box-shadow 0.3s ease;
             }
 
             /* Timeline */
@@ -147,18 +159,14 @@
             }
 
             .timeline::before {
-                content: "";
+                content: '';
                 position: absolute;
                 top: 0;
                 left: 0.6rem;
                 width: 6px;
                 height: 0;
                 border-radius: 3px;
-                background: linear-gradient(
-                        to bottom,
-                        var(--accent) 0%,
-                        rgba(59,130,246,0.2) 100%
-                );
+                background: linear-gradient(to bottom, var(--accent) 0%, rgba(59, 130, 246, 0.2) 100%);
                 transition: height 1.5s ease-out;
                 transform-origin: top;
             }
@@ -171,7 +179,9 @@
                 margin-bottom: 1.5rem;
                 opacity: 0;
                 transform: translateY(20px);
-                transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+                transition:
+                    opacity 0.6s ease-out,
+                    transform 0.6s ease-out;
             }
 
             .timeline-item.visible {
@@ -189,7 +199,7 @@
 
             .timeline-head .time {
                 color: #94a3b8;
-                font-size: .85rem;
+                font-size: 0.85rem;
                 white-space: nowrap;
             }
 
@@ -217,10 +227,12 @@
                 display: flex;
                 align-items: center;
                 gap: 0.6rem;
-                background: #3b82f622;
+                background: var(--tags);
                 padding: 0.3rem 0.7rem;
                 border-radius: 999px;
-                transition: transform 0.2s ease, background 0.2s ease;
+                transition:
+                    transform 0.2s ease,
+                    background 0.2s ease;
             }
 
             /* List of skill tags */
@@ -233,7 +245,7 @@
             }
 
             .skill-items .tags li {
-                background-color: var(--bg-2);
+                background: var(--tags);
                 padding: 2px 8px;
                 border-radius: 4px;
                 font-size: 0.9em;
@@ -316,10 +328,10 @@
             }
             .skill-tag {
                 background: #3b82f622;
-                padding: .6rem .8rem;
+                padding: 0.6rem 0.8rem;
                 border-radius: 12px;
-                margin-bottom: .7rem;
-                box-shadow: inset 0 0 0 1px rgba(59,130,246,.3);
+                margin-bottom: 0.7rem;
+                box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.3);
             }
 
             .skill-tag span {
@@ -327,13 +339,86 @@
                 font-weight: 600;
                 margin-bottom: 6px;
             }
+
+            /* Advantages Grid */
+            .advantages-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+                margin-top: 1.5rem;
+            }
+
+            .advantage-item {
+                background: var(--bg-2);
+                padding: 1.5rem;
+                border-radius: var(--radius);
+                text-align: center;
+                transition:
+                    transform 0.3s ease,
+                    box-shadow 0.3s ease;
+            }
+
+            .advantage-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .advantage-item i {
+                font-size: 2rem;
+                color: var(--accent);
+                margin-bottom: 1rem;
+                display: block;
+            }
+
+            .advantage-item h3 {
+                margin: 0.5rem 0;
+                color: var(--content);
+            }
+
+            .advantage-item p {
+                color: var(--border);
+                font-size: 0.95rem;
+                line-height: 1.5;
+                margin: 0;
+            }
+
+            /* Call to Action */
+            .call-to-action {
+                text-align: center;
+                background: var(--accent);
+                color: white;
+            }
+
+            .call-to-action h2,
+            .call-to-action p {
+                color: white;
+            }
+
+            .call-to-action .button {
+                display: inline-block;
+                background: white;
+                color: var(--accent);
+                padding: 0.8rem 2rem;
+                border-radius: 50px;
+                text-decoration: none;
+                font-weight: 600;
+                margin-top: 1rem;
+                transition:
+                    transform 0.2s ease,
+                    box-shadow 0.2s ease;
+            }
+
+            .call-to-action .button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
         </style>
     </head>
 
     <body>
         <header class="header">
             <div class="header-inner">
-                <h1 class="name">LUKAS SCHMID</h1>
+                <h1 class="name"><a href="#" id="homeLink" style="color: inherit; text-decoration: none">LUKAS SCHMID</a></h1>
                 <nav class="actions">
                     <button id="langToggle"><i class="fa-solid fa-earth"></i> DE | EN</button>
                     <button id="themeToggle"><i class="fa-solid fa-moon"></i></button>
@@ -345,7 +430,7 @@
             <!-- Sidebar -->
             <aside>
                 <!-- Kontakt -->
-                <section class="card iconList">
+                <section id="contact" class="card iconList">
                     <img class="avatar" src="img/avatar.jpg" alt="Profilbild" />
                     <h2>Kontakt <i class="fa-solid fa-address-card"></i></h2>
                     <ul>
@@ -387,31 +472,43 @@
                         <li><i class="fa-solid fa-file-code"></i> JSON</li>
                     </ul>
                     <ul class="tags">
-                        <li><div class="language">
-                            <i class="fa-brands fa-js"></i> JavaScript | TypeScript (fundiert)
-                            <div class="bar"><div class="fill" style="width: 90%"></div></div></div>
+                        <li>
+                            <div class="language">
+                                <i class="fa-brands fa-js"></i> JavaScript | TypeScript (fundiert)
+                                <div class="bar"><div class="fill" style="width: 90%"></div></div>
+                            </div>
                         </li>
-                        <li><div class="language">
-                            <i class="fa-brands fa-node-js"></i> Node.js
-                            <div class="bar"><div class="fill" style="width: 90%"></div></div></div>
+                        <li>
+                            <div class="language">
+                                <i class="fa-brands fa-node-js"></i> Node.js
+                                <div class="bar"><div class="fill" style="width: 90%"></div></div>
+                            </div>
                         </li>
-                        <li><div class="language">
-                            <span><i class="fa-brands fa-php"></i> PHP (fortgeschritten)</span>
-                            <div class="bar"><div class="fill" style="width: 90%"></div></div></div>
+                        <li>
+                            <div class="language">
+                                <span><i class="fa-brands fa-php"></i> PHP (fortgeschritten)</span>
+                                <div class="bar"><div class="fill" style="width: 90%"></div></div>
+                            </div>
                         </li>
                     </ul>
                     <ul class="tags iconList">
-                        <li><div>
-                            <i class="fa-brands fa-js"></i>JavaScript | TypeScript (fundiert)
-                            <div class="bar"><div class="fill" style="width: 90%"></div></div></div>
+                        <li>
+                            <div>
+                                <i class="fa-brands fa-js"></i>JavaScript | TypeScript (fundiert)
+                                <div class="bar"><div class="fill" style="width: 90%"></div></div>
+                            </div>
                         </li>
-                        <li><div class="">
-                            <i class="fa-brands fa-node-js"></i> Node.js
-                            <div class="bar"><div class="fill" style="width: 90%"></div></div></div>
+                        <li>
+                            <div class="">
+                                <i class="fa-brands fa-node-js"></i> Node.js
+                                <div class="bar"><div class="fill" style="width: 90%"></div></div>
+                            </div>
                         </li>
-                        <li><div class="">
-                            <span><i class="fa-brands fa-php"></i> PHP</span>
-                            <div class="bar"><div class="fill" style="width: 90%"></div></div></div>
+                        <li>
+                            <div class="">
+                                <span><i class="fa-brands fa-php"></i> PHP</span>
+                                <div class="bar"><div class="fill" style="width: 90%"></div></div>
+                            </div>
                         </li>
                     </ul>
                 </section>
@@ -426,11 +523,16 @@
                         <li><i class="fa-solid fa-lightbulb"></i> Problemlösung</li>
                     </ul>
                     <ul class="tags iconList">
-                        <li class="iconList"> <div class="language">
-                            <i class="fa-solid fa-people-group"></i>Teamfähigkeit
-                            <div class="bar"><div class="fill" style="width: 100%"></div></div></div> </li>
-                        <li> <span><i class="fa-solid fa-book-open"></i> Lernbereitschaft</span>
-                            <div class="bar"><div class="fill" style="width: 100%"></div></div> </li>
+                        <li class="iconList">
+                            <div class="language">
+                                <i class="fa-solid fa-people-group"></i>Teamfähigkeit
+                                <div class="bar"><div class="fill" style="width: 100%"></div></div>
+                            </div>
+                        </li>
+                        <li>
+                            <span><i class="fa-solid fa-book-open"></i> Lernbereitschaft</span>
+                            <div class="bar"><div class="fill" style="width: 100%"></div></div>
+                        </li>
                         <li><i class="fa-solid fa-check-circle"></i> Zuverlässigkeit</li>
                         <li><i class="fa-solid fa-lightbulb"></i> Problemlösung</li>
                     </ul>
@@ -440,50 +542,23 @@
 
                     <div class="skill-tag">
                         <span>Teamarbeit</span>
-                        <div class="bar"><div class="fill" style="width:95%"></div></div>
+                        <div class="bar"><div class="fill" style="width: 95%"></div></div>
                     </div>
 
                     <div class="skill-tag">
                         <span>Kommunikation</span>
-                        <div class="bar"><div class="fill" style="width:90%"></div></div>
+                        <div class="bar"><div class="fill" style="width: 90%"></div></div>
                     </div>
 
                     <div class="skill-tag">
                         <span>Problemlösung</span>
-                        <div class="bar"><div class="fill" style="width:85%"></div></div>
+                        <div class="bar"><div class="fill" style="width: 85%"></div></div>
                     </div>
 
                     <div class="skill-tag">
                         <span>Zeitmanagement</span>
-                        <div class="bar"><div class="fill" style="width:80%"></div></div>
+                        <div class="bar"><div class="fill" style="width: 80%"></div></div>
                     </div>
-                </section>
-                <section class="card iconList">
-                    <h2>Kompetenzen</h2>
-                    <ul class="tags ">
-                        <li>
-                            <div class="iconList">
-                                <span>Teamarbeit</span>
-                                <div class="bar"><div class="fill" style="width:95%"></div></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="skill-tag">
-                                <span>Kommunikation</span>
-                                <div class="bar"><div class="fill" style="width:90%"></div></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="skill-tag">
-                                <span>Problemlösung</span>
-                                <div class="bar"><div class="fill" style="width:85%"></div></div>
-                            </div>
-                        </li>
-<!--                        <div class="">-->
-<!--                            <span>Zeitmanagement</span>-->
-<!--                            <div class="bar"><div class="fill" style="width:80%"></div></div>-->
-<!--                        </div>-->
-                    </ul>
                 </section>
 
                 <!-- Sprachkenntnisse -->
@@ -503,16 +578,23 @@
                     <section class="card">
                         <h2><i class="fa-solid fa-user"></i> Über mich</h2>
                         <p>
-                            Leidenschaftlicher Backend-Entwickler mit Fokus auf stabile APIs und saubere Datenmodelle.
-                            Teamplayer, kommunikativ, engagiert.
+                            Als leidenschaftlicher Backend-Softwareentwickler mit mehr als zwei Jahren Berufserfahrung bringe ich bereits umfassendes
+                            Wissen in der Entwicklung von Backend-Lösungen mit. Bereits während meines Studiums habe ich wertvolle praktische
+                            Erfahrungen gesammelt, insbesondere in der Konzeption und Implementierung von RESTful-APIs mit Node.js und PHP sowie dem
+                            Management von SQL- und NoSQL-Datenbanken. Meine lernbereite und zuverlässige Arbeitsweise sowie die Freude an der Arbeit
+                            im Team, ermöglichen es mir Herausforderungen strategisch anzugehen und innovative Softwarelösungen zu realisieren. Zudem
+                            bin ich stets motiviert mich in neue Technologien einzuarbeiten und mein Fachwissen gezielt zu erweitern, um effizienten
+                            und qualitativ hochwertigen Code zu entwickeln.
                         </p>
                     </section>
 
                     <section class="card">
                         <h2><i class="fa-solid fa-rocket"></i> Zukunftsvision</h2>
                         <p>
-                            In fünf Jahren erfahrener Backend-Engineer mit Verantwortung für Services & Teams, Mentoring
-                            und stetigem Lernen neuer Technologien.
+                            In den kommenden Jahren möchte ich mich als erfahrener Backend-Entwickler etablieren, der nicht nur technische Lösungen
+                            gestaltet, sondern auch als kompetente Ansprechperson für Fragen und Probleme fungiert. Somit strebe ich danach mehr
+                            Verantwortung zu übernehmen, möchte aber dennoch weiterhin selbst aktiv programmieren, um stets neue Technologien und Best
+                            Practices in meine Arbeit einfließen zu lassen.
                         </p>
                     </section>
 
@@ -521,49 +603,61 @@
                         <ol class="timeline">
                             <li class="timeline-item">
                                 <div class="timeline-head">
-                                    <span><b>Softwareentwickler Backend (Werkstudent)</b> <br><i>bei erkoware solutions GmbH (Kempten)</i></span>
+                                    <span><b>Softwareentwickler Backend (Werkstudent)</b> <br /><i>bei erkoware solutions GmbH (Kempten)</i></span>
                                     <span class="time">02/2023 – 03/2025</span>
                                 </div>
                                 <ul class="bullets">
-                                    <li>Konzeption, Implementierung, Dokumentation, Testing, Deployment und Monitoring von Schnittstellen (RESTful-APIs)</li>
-                                    <li>Entwurf, Implementierung und Wartung von Datenbankarchitekturen für relationale (MariaDB) und nicht-relationale (MongoDB) Datenbanken</li>
+                                    <li>
+                                        Konzeption, Implementierung, Dokumentation, Testing, Deployment und Monitoring von Schnittstellen
+                                        (RESTful-APIs)
+                                    </li>
+                                    <li>
+                                        Entwurf, Implementierung und Wartung von Datenbankarchitekturen für relationale (MariaDB) und
+                                        nicht-relationale (MongoDB) Datenbanken
+                                    </li>
                                     <li>
                                         <div class="skill-items">
                                             <span>Erworbene Kenntnisse:</span>
-                                            <ul class="tags" style="display: contents;">
-                                            <li>REST-APIs</li>
-                                            <li>Datenbanken</li>
-                                            <li>Node.js</li>
-                                            <li>TypeScript</li>
-                                            <li>PHP</li>
-                                            <li>NoSQL</li>
-                                            <li>SQL</li>
-                                            <li>JSON</li>
-                                            <li>HTML</li>
-                                            <li>Swagger</li>
-                                            <li>Scrum</li>
-                                            <li>Git</li>
-                                            <li>Docker</li>
-                                            <li>Portainer</li>
-                                            <li>Grafana</li>
-                                            <li>Postman</li>
-                                        </ul>
+                                            <ul class="tags" style="display: contents">
+                                                <li>REST-APIs</li>
+                                                <li>Datenbanken</li>
+                                                <li>Node.js</li>
+                                                <li>TypeScript</li>
+                                                <li>PHP</li>
+                                                <li>NoSQL</li>
+                                                <li>SQL</li>
+                                                <li>JSON</li>
+                                                <li>HTML</li>
+                                                <li>Swagger</li>
+                                                <li>Scrum</li>
+                                                <li>Git</li>
+                                                <li>Docker</li>
+                                                <li>Portainer</li>
+                                                <li>Grafana</li>
+                                                <li>Postman</li>
+                                            </ul>
                                         </div>
                                     </li>
                                 </ul>
                             </li>
                             <li class="timeline-item">
                                 <div class="timeline-head">
-                                    <span class="role"><b>Serverless Computing in der API-Entwicklung (Bachelorarbeit)</b> <br><i>bei erkoware solutions GmbH (Kempten)</i></span>
+                                    <span class="role">
+                                        <b>Serverless Computing in der API-Entwicklung (Bachelorarbeit)</b> <br />
+                                        <i>bei erkoware solutions GmbH (Kempten)</i>
+                                    </span>
                                     <span class="time">10/2024 – 02/2025</span>
                                 </div>
                                 <ul class="bullets">
                                     <li>Konzeption und Implementierung einer serverlosen Webshop-API in der AWS-Cloud</li>
-                                    <li>Evaluierung der serverlosen Microservices-Architektur in Kontrast zu einem serverbasierten monolithischen Ansatz</li>
+                                    <li>
+                                        Evaluierung der serverlosen Microservices-Architektur in Kontrast zu einem serverbasierten monolithischen
+                                        Ansatz
+                                    </li>
                                     <li>
                                         <div class="skill-items">
                                             <span>Erworbene Kenntnisse:</span>
-                                            <ul class="tags" style="display: contents;">
+                                            <ul class="tags" style="display: contents">
                                                 <li>Microservices</li>
                                                 <li>Node.js</li>
                                                 <li>TypeScript</li>
@@ -596,7 +690,7 @@
                                     <li>
                                         <div class="skill-items">
                                             <span>Erworbene Kenntnisse:</span>
-                                            <ul class="tags" style="display: contents;">
+                                            <ul class="tags" style="display: contents">
                                                 <li>Java</li>
                                                 <li>Python</li>
                                                 <li>PHP</li>
@@ -623,7 +717,7 @@
                                     <li>
                                         <div class="skill-items">
                                             <span>Erworbene Kenntnisse:</span>
-                                            <ul class="tags" style="display: contents;">
+                                            <ul class="tags" style="display: contents">
                                                 <li>Java</li>
                                             </ul>
                                         </div>
@@ -634,7 +728,7 @@
                     </section>
 
                     <section class="card">
-                        <h2><i class="fa-solid fa-people-group"></i> Engagement</h2>
+                        <h2><i class="fa-solid fa-handshake-angle"></i> Engagement</h2>
                         <ol class="timeline">
                             <li class="timeline-item">
                                 <div class="timeline-head">
@@ -647,7 +741,7 @@
                                     <li>
                                         <div class="skill-items">
                                             <span>Erworbene Fähigkeiten:</span>
-                                            <ul class="tags" style="display: contents;">
+                                            <ul class="tags" style="display: contents">
                                                 <li>Teamfähigkeit</li>
                                                 <li>Zuverlässigkeit</li>
                                                 <li>Verantwortungsbewusstsein</li>
@@ -667,11 +761,9 @@
                                     <li>
                                         <div class="skill-items">
                                             <span>Erworbene Fähigkeiten:</span>
-                                            <ul class="tags" style="display: contents;">
-<!--                                                <li>Konfliktlösung</li>-->
+                                            <ul class="tags" style="display: contents">
                                                 <li>Problemlösung</li>
                                                 <li>Kommunikationsfähigkeit</li>
-                                                <li>Verantwortung</li>
                                             </ul>
                                         </div>
                                     </li>
@@ -680,6 +772,37 @@
                         </ol>
                     </section>
 
+                    <section class="card">
+                        <h2><i class="fa-solid fa-star"></i> Was ich mitbringe</h2>
+                        <div class="advantages-grid">
+                            <div class="advantage-item">
+                                <i class="fa-solid fa-code"></i>
+                                <h3>Backend-Entwicklung</h3>
+                                <p>Implementierung von Backend-Lösungen mit modernen Technologien</p>
+                            </div>
+                            <div class="advantage-item">
+                                <i class="fa-solid fa-plug"></i>
+                                <h3>API-Design</h3>
+                                <p>Konzeption und Entwicklung von RESTful-Schnittstellen</p>
+                            </div>
+                            <div class="advantage-item">
+                                <i class="fa-solid fa-database"></i>
+                                <h3>Datenbanken</h3>
+                                <p>Erfahrung im Umgang mit SQL- und NoSQL-Datenbanken</p>
+                            </div>
+                            <div class="advantage-item">
+                                <i class="fa-solid fa-people-group"></i>
+                                <h3>Teamplayer</h3>
+                                <p>Zuverlässige Zusammenarbeit in agilen Teams</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="card call-to-action">
+                        <h2>Überzeugt?</h2>
+                        <p>Dann freue ich mich auf Ihre Rückmeldung!</p>
+                        <a href="#contact" class="button">Kontakt aufnehmen</a>
+                    </section>
                 </div>
 
                 <!-- English -->
@@ -687,40 +810,223 @@
                     <section class="card">
                         <h2><i class="fa-solid fa-user"></i> About Me</h2>
                         <p>
-                            Passionate backend developer focused on stable APIs and clean data models. Team player,
-                            communicative, motivated.
+                            As a passionate backend software developer with over two years of professional experience, I bring comprehensive knowledge
+                            in developing backend solutions. During my studies, I gained valuable practical experience, particularly in designing and
+                            implementing RESTful APIs with Node.js and PHP, as well as managing SQL and NoSQL databases. My eager-to-learn attitude,
+                            reliability, and enjoyment of teamwork enable me to tackle challenges strategically and implement innovative software
+                            solutions. I am always motivated to learn new technologies and expand my expertise to develop efficient and high-quality
+                            code.
                         </p>
                     </section>
+
                     <section class="card">
-                        <h2><i class="fa-solid fa-rocket"></i> Vision</h2>
+                        <h2><i class="fa-solid fa-rocket"></i> Future Vision</h2>
                         <p>
-                            In five years: experienced backend engineer with responsibility for services & teams,
-                            mentoring, and continuous learning of new technologies.
+                            In the coming years, I aim to establish myself as an experienced backend developer who not only designs technical
+                            solutions but also serves as a competent point of contact for questions and issues. I strive to take on more
+                            responsibility while continuing to actively program, allowing me to continuously integrate new technologies and best
+                            practices into my work.
                         </p>
                     </section>
+
                     <section class="card">
-                        <h2><i class="fa-solid fa-briefcase"></i> Experience</h2>
+                        <h2><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
                         <ol class="timeline">
                             <li class="timeline-item">
                                 <div class="timeline-head">
-                                    <span class="role"
-                                        >Backend Developer (Working Student) · erkoware solutions GmbH</span
-                                    >
+                                    <span><b>Backend Software Developer (Working Student)</b> <br /><i>at erkoware solutions GmbH (Kempten)</i></span>
                                     <span class="time">02/2023 – 03/2025</span>
                                 </div>
                                 <ul class="bullets">
-                                    <li>Design, implementation, testing, deployment & monitoring of RESTful APIs.</li>
-                                    <li>Collaboration in the team, code reviews, documentation.</li>
+                                    <li>Design, implementation, documentation, testing, deployment, and monitoring of interfaces (RESTful APIs)</li>
+                                    <li>
+                                        Design, implementation, and maintenance of database architectures for relational (MariaDB) and non-relational
+                                        (MongoDB) databases
+                                    </li>
+                                    <li>
+                                        <div class="skill-items">
+                                            <span>Acquired Skills:</span>
+                                            <ul class="tags" style="display: contents">
+                                                <li>REST APIs</li>
+                                                <li>Databases</li>
+                                                <li>Node.js</li>
+                                                <li>TypeScript</li>
+                                                <li>PHP</li>
+                                                <li>NoSQL</li>
+                                                <li>SQL</li>
+                                                <li>JSON</li>
+                                                <li>HTML</li>
+                                                <li>Swagger</li>
+                                                <li>Scrum</li>
+                                                <li>Git</li>
+                                                <li>Docker</li>
+                                                <li>Portainer</li>
+                                                <li>Grafana</li>
+                                                <li>Postman</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="timeline-item">
+                                <div class="timeline-head">
+                                    <span class="role">
+                                        <b>Serverless Computing in API Development (Bachelor's Thesis)</b> <br />
+                                        <i>at erkoware solutions GmbH (Kempten)</i>
+                                    </span>
+                                    <span class="time">10/2024 – 02/2025</span>
+                                </div>
+                                <ul class="bullets">
+                                    <li>Design and implementation of a serverless webshop API in the AWS Cloud</li>
+                                    <li>Evaluation of serverless microservices architecture in contrast to a server-based monolithic approach</li>
+                                    <li>
+                                        <div class="skill-items">
+                                            <span>Acquired Skills:</span>
+                                            <ul class="tags" style="display: contents">
+                                                <li>Microservices</li>
+                                                <li>Node.js</li>
+                                                <li>TypeScript</li>
+                                                <li>NoSQL</li>
+                                                <li>AWS Lambda</li>
+                                                <li>AWS SAM</li>
+                                                <li>AWS Step Functions</li>
+                                                <li>EventBridge</li>
+                                                <li>API Gateway</li>
+                                                <li>DynamoDB</li>
+                                            </ul>
+                                        </div>
+                                    </li>
                                 </ul>
                             </li>
                         </ol>
                     </section>
+
                     <section class="card">
                         <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
-                        <ul>
-                            <li>B.Sc. Computer Science – University Musterstadt (2020–2024)</li>
-                            <li>High School Diploma – Gymnasium Beispielstadt (2019)</li>
-                        </ul>
+                        <ol class="timeline">
+                            <li class="timeline-item">
+                                <div class="timeline-head">
+                                    <span class="role"><b>Bachelor of Science</b> <i>at Kempten University of Applied Sciences</i></span>
+                                    <span class="time">10/2019 – 03/2025</span>
+                                </div>
+                                <ul class="bullets">
+                                    <li>Degree Program: Business Informatics</li>
+                                    <li>Grade: 1.8</li>
+                                    <li>
+                                        <div class="skill-items">
+                                            <span>Acquired Skills:</span>
+                                            <ul class="tags" style="display: contents">
+                                                <li>Java</li>
+                                                <li>Python</li>
+                                                <li>PHP</li>
+                                                <li>JSON</li>
+                                                <li>JavaScript</li>
+                                                <li>HTML</li>
+                                                <li>CSS</li>
+                                                <li>SQL</li>
+                                                <li>Databases</li>
+                                                <li>REST</li>
+                                                <li>SOAP</li>
+                                                <li>Scrum</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="timeline-item">
+                                <div class="timeline-head">
+                                    <span><b>Abitur (High School Diploma)</b> <i>at Gymnasium Immenstadt</i></span>
+                                    <span class="time">09/2011 – 07/2019</span>
+                                </div>
+                                <ul class="bullets">
+                                    <li>
+                                        <div class="skill-items">
+                                            <span>Acquired Skills:</span>
+                                            <ul class="tags" style="display: contents">
+                                                <li>Java</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </section>
+
+                    <section class="card">
+                        <h2><i class="fa-solid fa-handshake-angle"></i> Volunteer Work</h2>
+                        <ol class="timeline">
+                            <li class="timeline-item">
+                                <div class="timeline-head">
+                                    <span class="role"><b>Youth Trainer</b> <i>at TSV Buchenberg</i></span>
+                                    <span class="time">09/2018 – 09/2023</span>
+                                </div>
+                                <ul class="bullets">
+                                    <li>Planning and conducting training sessions</li>
+                                    <li>Supervising young people during training, matches, and excursions</li>
+                                    <li>
+                                        <div class="skill-items">
+                                            <span>Acquired Skills:</span>
+                                            <ul class="tags" style="display: contents">
+                                                <li>Teamwork</li>
+                                                <li>Reliability</li>
+                                                <li>Responsibility</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="timeline-item">
+                                <div class="timeline-head">
+                                    <span class="role"><b>Mediator</b> <i>at Gymnasium Immenstadt</i></span>
+                                    <span class="time">09/2013 – 07/2019</span>
+                                </div>
+                                <ul class="bullets">
+                                    <li>Conducting and leading mediation sessions</li>
+                                    <li>Resolving various conflicts</li>
+                                    <li>
+                                        <div class="skill-items">
+                                            <span>Acquired Skills:</span>
+                                            <ul class="tags" style="display: contents">
+                                                <li>Problem-solving</li>
+                                                <li>Communication skills</li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </section>
+
+                    <section class="card">
+                        <h2><i class="fa-solid fa-star"></i> What I Bring to the Table</h2>
+                        <div class="advantages-grid">
+                            <div class="advantage-item">
+                                <i class="fa-solid fa-code"></i>
+                                <h3>Backend Development</h3>
+                                <p>Implementation of backend solutions using modern technologies</p>
+                            </div>
+                            <div class="advantage-item">
+                                <i class="fa-solid fa-plug"></i>
+                                <h3>API Design</h3>
+                                <p>Design and development of RESTful interfaces</p>
+                            </div>
+                            <div class="advantage-item">
+                                <i class="fa-solid fa-database"></i>
+                                <h3>Databases</h3>
+                                <p>Experience with SQL and NoSQL databases</p>
+                            </div>
+                            <div class="advantage-item">
+                                <i class="fa-solid fa-people-group"></i>
+                                <h3>Team Player</h3>
+                                <p>Reliable collaboration in agile teams</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="card call-to-action">
+                        <h2>Convinced?</h2>
+                        <p>I look forward to hearing from you!</p>
+                        <a href="#contact" class="button">Get in Touch</a>
                     </section>
                 </div>
             </section>
@@ -736,10 +1042,10 @@
 
             // Function to initialize timeline animations
             function initTimelineAnimations() {
-                document.querySelectorAll('.timeline').forEach(timeline => {
+                document.querySelectorAll('.timeline').forEach((timeline) => {
                     // Reset animation state
                     timeline.classList.remove('animate');
-                    timeline.querySelectorAll('.timeline-item').forEach(item => {
+                    timeline.querySelectorAll('.timeline-item').forEach((item) => {
                         item.classList.remove('visible');
                     });
 
@@ -750,26 +1056,38 @@
                     timeline.classList.add('animate');
 
                     // Set up intersection observer
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add('visible');
-                            }
-                        });
-                    }, {
-                        threshold: 0.3,
-                        rootMargin: '0px 0px -50px 0px'
-                    });
+                    const observer = new IntersectionObserver(
+                        (entries) => {
+                            entries.forEach((entry) => {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add('visible');
+                                }
+                            });
+                        },
+                        {
+                            threshold: 0.3,
+                            rootMargin: '0px 0px -50px 0px',
+                        },
+                    );
 
                     // Observe timeline items
-                    timeline.querySelectorAll('.timeline-item').forEach(item => {
+                    timeline.querySelectorAll('.timeline-item').forEach((item) => {
                         observer.observe(item);
                     });
                 });
             }
 
             // Initialize animation page load
-            window.addEventListener("load", initTimelineAnimations);
+            window.addEventListener('load', initTimelineAnimations);
+
+            // Add click handler for home link
+            document.getElementById('homeLink').addEventListener('click', function (event) {
+                event.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                });
+            });
 
             // Theme toggle
             document.querySelector('#themeToggle').addEventListener('click', () => {
@@ -782,7 +1100,7 @@
                 document.getElementById('lang-de').classList.toggle('hidden');
                 document.getElementById('lang-en').classList.toggle('hidden');
 
-                initTimelineAnimations()
+                initTimelineAnimations();
             });
         </script>
     </body>
