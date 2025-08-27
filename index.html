@@ -175,16 +175,24 @@
                 height: 100%;
             }
 
-            .timeline-item {
-                margin-bottom: 1.5rem;
+            /* Initial hidden state for all animated elements */
+            .timeline-item,
+            section.card,
+            .advantage-item {
                 opacity: 0;
                 transform: translateY(20px);
+            }
+
+            .timeline-item {
+                margin-bottom: 1.5rem;
                 transition:
-                    opacity 0.6s ease-out,
+                    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
                     transform 0.6s ease-out;
             }
 
-            .timeline-item.visible {
+            .timeline-item.visible,
+            section.card.visible,
+            .advantage-item.visible {
                 opacity: 1;
                 transform: translateY(0);
             }
@@ -349,18 +357,13 @@
             }
 
             .advantage-item {
-                background: var(--bg-2);
+                background: var(--tags);
                 padding: 1.5rem;
                 border-radius: var(--radius);
                 text-align: center;
                 transition:
                     transform 0.3s ease,
                     box-shadow 0.3s ease;
-            }
-
-            .advantage-item:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             }
 
             .advantage-item i {
@@ -376,7 +379,7 @@
             }
 
             .advantage-item p {
-                color: var(--border);
+                color: var(--content);
                 font-size: 0.95rem;
                 line-height: 1.5;
                 margin: 0;
@@ -409,7 +412,7 @@
             }
 
             .call-to-action .button:hover {
-                transform: translateY(-2px);
+                transform: scale(105%);
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             }
         </style>
@@ -773,7 +776,7 @@
                     </section>
 
                     <section class="card">
-                        <h2><i class="fa-solid fa-star"></i> Was ich mitbringe</h2>
+                        <h2><i class="fa-solid fa-star"></i> Meine Stärken</h2>
                         <div class="advantages-grid">
                             <div class="advantage-item">
                                 <i class="fa-solid fa-code"></i>
@@ -998,7 +1001,7 @@
                     </section>
 
                     <section class="card">
-                        <h2><i class="fa-solid fa-star"></i> What I Bring to the Table</h2>
+                        <h2><i class="fa-solid fa-star"></i> My Strengths</h2>
                         <div class="advantages-grid">
                             <div class="advantage-item">
                                 <i class="fa-solid fa-code"></i>
@@ -1040,40 +1043,40 @@
             // Set current year in footer
             document.getElementById('year').textContent = new Date().getFullYear();
 
-            // Function to initialize timeline animations
+            // Function to initialize all animations with IntersectionObserver
             function initTimelineAnimations() {
+                // Set transitions for all animated elements
+                document.querySelectorAll('section.card, .advantage-item').forEach((el) => {
+                    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    el.classList.remove('visible');
+                });
+
+                // Common observer configuration
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.1,
+                        rootMargin: '0px 0px -50px 0px',
+                    },
+                );
+
+                // Observe all elements that should animate
+                document.querySelectorAll('.timeline-item, section.card, .advantage-item').forEach((element, index) => {
+                    observer.observe(element);
+                });
+
+                // Handle timeline animation separately
                 document.querySelectorAll('.timeline').forEach((timeline) => {
-                    // Reset animation state
                     timeline.classList.remove('animate');
-                    timeline.querySelectorAll('.timeline-item').forEach((item) => {
-                        item.classList.remove('visible');
-                    });
-
-                    // Force reflow to reset animation
-                    void timeline.offsetWidth;
-
-                    // Start animation
+                    void timeline.offsetWidth; // Force reflow
                     timeline.classList.add('animate');
-
-                    // Set up intersection observer
-                    const observer = new IntersectionObserver(
-                        (entries) => {
-                            entries.forEach((entry) => {
-                                if (entry.isIntersecting) {
-                                    entry.target.classList.add('visible');
-                                }
-                            });
-                        },
-                        {
-                            threshold: 0.3,
-                            rootMargin: '0px 0px -50px 0px',
-                        },
-                    );
-
-                    // Observe timeline items
-                    timeline.querySelectorAll('.timeline-item').forEach((item) => {
-                        observer.observe(item);
-                    });
                 });
             }
 
