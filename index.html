@@ -25,7 +25,6 @@
             [data-theme='dark'] {
                 --accent: #0776ca;
                 --bg: #0b0d12;
-                --bg-2: #190f0f;
                 --card: #131827;
                 --content: #e8eaf1;
                 --border: #9aa4b2;
@@ -36,7 +35,6 @@
             [data-theme='light'] {
                 --accent: #065c9c;
                 --bg: #f5f7fb;
-                --bg-2: #f0f4f8;
                 --card: #fff;
                 --content: #111;
                 --border: #111;
@@ -130,7 +128,6 @@
                 border-top: 1px solid color-mix(in oklab, var(--content), transparent 90%);
                 margin-top: 20px;
             }
-
             footer .container {
                 display: flex;
                 justify-content: center;
@@ -150,6 +147,27 @@
                     box-shadow 0.3s ease;
             }
 
+            /* Bars */
+            .bar {
+                background: color-mix(in oklab, var(--content), transparent 90%);
+                border-radius: 8px;
+                height: 8px;
+                overflow: hidden;
+            }
+            .barFill {
+                background: var(--accent);
+                height: 100%;
+                border-radius: 8px;
+            }
+
+            /* Animations */
+            .timeline-item.visible,
+            section.card.visible,
+            .advantage-item.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
             /* Timeline */
             .timeline {
                 position: relative;
@@ -157,7 +175,6 @@
                 padding: 0 0 0 2rem;
                 list-style: none;
             }
-
             .timeline::before {
                 content: '';
                 position: absolute;
@@ -170,7 +187,6 @@
                 transition: height 1.5s ease-out;
                 transform-origin: top;
             }
-
             .timeline.animate::before {
                 height: 100%;
             }
@@ -182,21 +198,12 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
-
             .timeline-item {
                 margin-bottom: 1.5rem;
                 transition:
                     opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
                     transform 0.6s ease-out;
             }
-
-            .timeline-item.visible,
-            section.card.visible,
-            .advantage-item.visible {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
             .timeline-head {
                 display: flex;
                 justify-content: space-between;
@@ -204,18 +211,15 @@
                 gap: 1rem;
                 font-weight: 600;
             }
-
             .timeline-head .time {
                 color: #94a3b8;
                 font-size: 0.85rem;
                 white-space: nowrap;
             }
-
             .bullets {
                 padding-left: 1.5rem;
                 list-style: disc;
             }
-
             .time {
                 color: var(--border);
                 white-space: nowrap;
@@ -225,6 +229,7 @@
             .tags {
                 display: inline-flex;
                 flex-wrap: wrap;
+                align-items: center;
                 gap: 0.5rem;
                 list-style: none;
                 padding: 0;
@@ -243,6 +248,32 @@
                     background 0.2s ease;
             }
 
+            /* List of competence tags */
+            .competence-tags {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 0.7rem;
+            }
+            .competence-tags li {
+                gap: 0;
+                background: var(--tags);
+                margin: 0;
+                padding: 0.7rem 1rem;
+                border-radius: 999px;
+                transition:
+                    transform 0.2s ease,
+                    background 0.2s ease;
+            }
+            .competence-tags li i {
+                font-size: 1rem;
+                min-width: 2rem;
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
+
             /* List of skill tags */
             .skill-items {
                 display: flex;
@@ -251,7 +282,6 @@
                 gap: 5px;
                 margin: 8px 0;
             }
-
             .skill-items .tags li {
                 background: var(--tags);
                 padding: 2px 8px;
@@ -268,19 +298,16 @@
                 list-style: none;
                 padding: 0;
             }
-
             .iconList li {
                 display: flex;
                 align-items: center;
                 gap: 0.6rem;
             }
-
             .iconList li i {
                 font-size: 1rem;
                 min-width: 18px;
                 text-align: center;
             }
-
             .iconList a:hover {
                 color: var(--accent);
             }
@@ -292,60 +319,12 @@
                 margin-bottom: 1rem;
                 object-fit: cover;
             }
-
             .address {
                 display: flex;
                 flex-direction: column;
             }
-
             .address span {
                 display: block;
-            }
-
-            .bar {
-                background: rgba(255, 255, 255, 0.1);
-                border-radius: 8px;
-                height: 8px;
-                overflow: hidden;
-            }
-
-            .fill {
-                background: var(--accent);
-                height: 100%;
-                border-radius: 8px;
-            }
-
-            .language {
-                margin-bottom: 12px;
-            }
-
-            .language span {
-                font-size: 0.9rem;
-                font-weight: 600;
-                display: block;
-                margin-bottom: 4px;
-            }
-
-            .skill {
-                margin-bottom: 14px;
-            }
-            .skill span {
-                display: block;
-                font-weight: 600;
-                margin-bottom: 4px;
-            }
-            .skill-tag {
-                background: #3b82f622;
-                padding: 0.6rem 0.8rem;
-                border-radius: 12px;
-                margin-bottom: 0.7rem;
-                box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.3);
-            }
-
-            .skill-tag span {
-                display: block;
-                font-weight: 600;
-                margin-bottom: 6px;
             }
 
             /* Advantages Grid */
@@ -355,7 +334,6 @@
                 gap: 1.5rem;
                 margin-top: 1.5rem;
             }
-
             .advantage-item {
                 background: var(--tags);
                 padding: 1.5rem;
@@ -365,19 +343,16 @@
                     transform 0.3s ease,
                     box-shadow 0.3s ease;
             }
-
             .advantage-item i {
                 font-size: 2rem;
                 color: var(--accent);
                 margin-bottom: 1rem;
                 display: block;
             }
-
             .advantage-item h3 {
                 margin: 0.5rem 0;
                 color: var(--content);
             }
-
             .advantage-item p {
                 color: var(--content);
                 font-size: 0.95rem;
@@ -391,12 +366,10 @@
                 background: var(--accent);
                 color: white;
             }
-
             .call-to-action h2,
             .call-to-action p {
                 color: white;
             }
-
             .call-to-action .button {
                 display: inline-block;
                 background: white;
@@ -410,7 +383,6 @@
                     transform 0.2s ease,
                     box-shadow 0.2s ease;
             }
-
             .call-to-action .button:hover {
                 transform: scale(105%);
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -429,155 +401,274 @@
             </div>
         </header>
 
-        <main class="container grid">
+        <main class="container grid" id="contact">
             <!-- Sidebar -->
             <aside>
-                <!-- Kontakt -->
-                <section id="contact" class="card iconList">
-                    <img class="avatar" src="img/avatar.jpg" alt="Profilbild" />
-                    <h2>Kontakt <i class="fa-solid fa-address-card"></i></h2>
-                    <ul>
-                        <li>
-                            <i class="fa-solid fa-location-dot"></i>
-                            <div class="address">
-                                <span>Oskar-Maria-Graf-Straße 9</span>
-                                <span>87437 Kempten</span>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-envelope"></i>
-                            <a href="mailto:lukas.schmid296@gmx.net"> lukas.schmid@gmx.net</a>
-                        </li>
-                        <li><i class="fa-solid fa-phone"></i> <a href="tel:+4915128181132"> 0151 28181132</a></li>
-                        <li>
-                            <i class="fa-brands fa-linkedin"></i>
-                            <a href="https://www.linkedin.com/in/lukas-schmid-55b860256" target="_blank">
-                                https://www.linkedin.com/in/lukas-schmid-55b860256
-                            </a>
-                        </li>
-                    </ul>
-                </section>
+                <!-- German Version -->
+                <div id="lang-de">
+                    <section class="card iconList">
+                        <img class="avatar" src="img/avatar.jpg" alt="Profilbild" />
+                        <h2>Kontakt <i class="fa-solid fa-address-card"></i></h2>
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-location-dot"></i>
+                                <div class="address">
+                                    <span>Oskar-Maria-Graf-Straße 9</span>
+                                    <span>87437 Kempten, Deutschland</span>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-envelope"></i>
+                                <a href="mailto:lukas.schmid296@gmx.net">lukas.schmid@gmx.net</a>
+                            </li>
+                            <li><i class="fa-solid fa-phone"></i> <a href="tel:+4915128181132">0151 28181132</a></li>
+                            <li>
+                                <i class="fa-brands fa-linkedin"></i>
+                                <a href="https://www.linkedin.com/in/lukas-schmid-55b860256" target="_blank"> linkedin.com/in/lukas-schmid </a>
+                            </li>
+                        </ul>
+                    </section>
 
-                <!-- Technische Fähigkeiten -->
-                <section class="card">
-                    <h2>Technische Fähigkeiten</h2>
-                    <ul class="tags">
-                        <li><i class="fa-brands fa-js"></i> JavaScript | TypeScript</li>
-                        <li><i class="fa-brands fa-node-js"></i> Node.js</li>
-                        <li><i class="fa-brands fa-php"></i> PHP</li>
-                        <li><i class="fa-solid fa-database"></i> SQL | NoSQL</li>
-                        <li><i class="fa-solid fa-network-wired"></i> REST APIs</li>
-                        <li><i class="fa-brands fa-git-alt"></i> Git</li>
-                        <li><i class="fa-brands fa-docker"></i> Docker</li>
-                        <li><i class="fa-brands fa-java"></i> Java</li>
-                        <li><i class="fa-brands fa-html5"></i> HTML</li>
-                        <li><i class="fa-brands fa-python"></i> Python</li>
-                        <li><i class="fa-solid fa-file-code"></i> JSON</li>
-                    </ul>
-                    <ul class="tags">
-                        <li>
-                            <div class="language">
-                                <i class="fa-brands fa-js"></i> JavaScript | TypeScript (fundiert)
-                                <div class="bar"><div class="fill" style="width: 90%"></div></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="language">
-                                <i class="fa-brands fa-node-js"></i> Node.js
-                                <div class="bar"><div class="fill" style="width: 90%"></div></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="language">
-                                <span><i class="fa-brands fa-php"></i> PHP (fortgeschritten)</span>
-                                <div class="bar"><div class="fill" style="width: 90%"></div></div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="tags iconList">
-                        <li>
-                            <div>
-                                <i class="fa-brands fa-js"></i>JavaScript | TypeScript (fundiert)
-                                <div class="bar"><div class="fill" style="width: 90%"></div></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="">
-                                <i class="fa-brands fa-node-js"></i> Node.js
-                                <div class="bar"><div class="fill" style="width: 90%"></div></div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="">
-                                <span><i class="fa-brands fa-php"></i> PHP</span>
-                                <div class="bar"><div class="fill" style="width: 90%"></div></div>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
+                    <section class="card">
+                        <h2>Technische Fähigkeiten</h2>
+                        <ul class="competence-tags">
+                            <li>
+                                <div>
+                                    <i class="fa-brands fa-js"></i><span>JavaScript | TypeScript</span>
+                                    <div class="bar"><div class="barFill" style="width: 90%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-brands fa-php"></i><span>PHP</span>
+                                    <div class="bar"><div class="barFill" style="width: 80%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-solid fa-database"></i><span>NoSQL</span>
+                                    <div class="bar"><div class="barFill" style="width: 90%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-solid fa-database"></i><span>SQL</span>
+                                    <div class="bar"><div class="barFill" style="width: 80%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-brands fa-java"></i><span>Java</span>
+                                    <div class="bar"><div class="barFill" style="width: 40%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-brands fa-python"></i><span>Python</span>
+                                    <div class="bar"><div class="barFill" style="width: 30%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-solid fa-file-code"></i><span>JSON</span>
+                                    <div class="bar"><div class="barFill" style="width: 90%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-brands fa-html5"></i><span>HTML</span>
+                                    <div class="bar"><div class="barFill" style="width: 50%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-brands fa-git-alt"></i><span>Git</span>
+                                    <div class="bar"><div class="barFill" style="width: 70%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-brands fa-docker"></i><span>Docker</span>
+                                    <div class="bar"><div class="barFill" style="width: 40%"></div></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
 
-                <!-- Kompetenzen -->
-                <section class="card iconList">
-                    <h2>Kompetenzen</h2>
-                    <ul class="">
-                        <li><i class="fa-solid fa-people-group"></i> Teamfähigkeit</li>
-                        <li><i class="fa-solid fa-book-open"></i> Lernbereitschaft</li>
-                        <li><i class="fa-solid fa-check-circle"></i> Zuverlässigkeit</li>
-                        <li><i class="fa-solid fa-lightbulb"></i> Problemlösung</li>
-                    </ul>
-                    <ul class="tags iconList">
-                        <li class="iconList">
-                            <div class="language">
-                                <i class="fa-solid fa-people-group"></i>Teamfähigkeit
-                                <div class="bar"><div class="fill" style="width: 100%"></div></div>
-                            </div>
-                        </li>
-                        <li>
-                            <span><i class="fa-solid fa-book-open"></i> Lernbereitschaft</span>
-                            <div class="bar"><div class="fill" style="width: 100%"></div></div>
-                        </li>
-                        <li><i class="fa-solid fa-check-circle"></i> Zuverlässigkeit</li>
-                        <li><i class="fa-solid fa-lightbulb"></i> Problemlösung</li>
-                    </ul>
-                </section>
-                <section class="card">
-                    <h2>Kompetenzen</h2>
+                    <section class="card">
+                        <h2>Persönliche Stärken</h2>
+                        <ul class="competence-tags">
+                            <li>
+                                <div>
+                                    <i class="fa-solid fa-people-group"></i><span>Teamfähigkeit</span>
+                                    <div class="bar"><div class="barFill" style="width: 100%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-solid fa-book-open"></i><span>Lernbereitschaft</span>
+                                    <div class="bar"><div class="barFill" style="width: 100%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-solid fa-check-circle"></i><span>Zuverlässigkeit</span>
+                                    <div class="bar"><div class="barFill" style="width: 100%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-solid fa-lightbulb"></i><span>Problemlösung</span>
+                                    <div class="bar"><div class="barFill" style="width: 100%"></div></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
 
-                    <div class="skill-tag">
-                        <span>Teamarbeit</span>
-                        <div class="bar"><div class="fill" style="width: 95%"></div></div>
-                    </div>
+                    <section class="card iconList">
+                        <h2>Sprachkenntnisse</h2>
+                        <ul class="tags">
+                            <li>Deutsch (Muttersprache)</li>
+                            <li>Englisch (Fließend | B2+/C1)</li>
+                        </ul>
+                    </section>
+                </div>
 
-                    <div class="skill-tag">
-                        <span>Kommunikation</span>
-                        <div class="bar"><div class="fill" style="width: 90%"></div></div>
-                    </div>
+                <!-- English Version -->
+                <div id="lang-en" class="hidden">
+                    <section class="card iconList">
+                        <img class="avatar" src="img/avatar.jpg" alt="Profile Picture" />
+                        <h2>Contact <i class="fa-solid fa-address-card"></i></h2>
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-location-dot"></i>
+                                <div class="address">
+                                    <span>Oskar-Maria-Graf-Straße 9</span>
+                                    <span>87437 Kempten, Germany</span>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-envelope"></i>
+                                <a href="mailto:lukas.schmid296@gmx.net">lukas.schmid@gmx.net</a>
+                            </li>
+                            <li><i class="fa-solid fa-phone"></i> <a href="tel:+4915128181132">+49 151 28181132</a></li>
+                            <li>
+                                <i class="fa-brands fa-linkedin"></i>
+                                <a href="https://www.linkedin.com/in/lukas-schmid-55b860256" target="_blank"> linkedin.com/in/lukas-schmid </a>
+                            </li>
+                        </ul>
+                    </section>
 
-                    <div class="skill-tag">
-                        <span>Problemlösung</span>
-                        <div class="bar"><div class="fill" style="width: 85%"></div></div>
-                    </div>
+                    <section class="card">
+                        <h2>Technical Skills</h2>
+                        <ul class="competence-tags">
+                            <li>
+                                <div>
+                                    <i class="fa-brands fa-js"></i><span>JavaScript | TypeScript</span>
+                                    <div class="bar"><div class="barFill" style="width: 90%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-brands fa-php"></i><span>PHP</span>
+                                    <div class="bar"><div class="barFill" style="width: 80%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-solid fa-database"></i><span>NoSQL</span>
+                                    <div class="bar"><div class="barFill" style="width: 90%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-solid fa-database"></i><span>SQL</span>
+                                    <div class="bar"><div class="barFill" style="width: 80%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-brands fa-java"></i><span>Java</span>
+                                    <div class="bar"><div class="barFill" style="width: 40%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-brands fa-python"></i><span>Python</span>
+                                    <div class="bar"><div class="barFill" style="width: 30%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-solid fa-file-code"></i><span>JSON</span>
+                                    <div class="bar"><div class="barFill" style="width: 90%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-brands fa-html5"></i><span>HTML</span>
+                                    <div class="bar"><div class="barFill" style="width: 50%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-brands fa-git-alt"></i><span>Git</span>
+                                    <div class="bar"><div class="barFill" style="width: 70%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-brands fa-docker"></i><span>Docker</span>
+                                    <div class="bar"><div class="barFill" style="width: 40%"></div></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
 
-                    <div class="skill-tag">
-                        <span>Zeitmanagement</span>
-                        <div class="bar"><div class="fill" style="width: 80%"></div></div>
-                    </div>
-                </section>
+                    <section class="card">
+                        <h2>Competencies</h2>
+                        <ul class="competence-tags">
+                            <li>
+                                <div>
+                                    <i class="fa-solid fa-people-group"></i><span>Teamwork</span>
+                                    <div class="bar"><div class="barFill" style="width: 100%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-solid fa-book-open"></i><span>Willingness to Learn</span>
+                                    <div class="bar"><div class="barFill" style="width: 100%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-solid fa-check-circle"></i><span>Reliability</span>
+                                    <div class="bar"><div class="barFill" style="width: 100%"></div></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <i class="fa-solid fa-lightbulb"></i><span>Problem Solving</span>
+                                    <div class="bar"><div class="barFill" style="width: 100%"></div></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
 
-                <!-- Sprachkenntnisse -->
-                <section class="card iconList">
-                    <h2>Sprachkenntnisse</h2>
-                    <ul class="tags">
-                        <li>Deutsch (Muttersprache)</li>
-                        <li>Englisch (Konversationssicher | B2+/C1)</li>
-                    </ul>
-                </section>
+                    <section class="card iconList">
+                        <h2>Language Skills</h2>
+                        <ul class="tags">
+                            <li>German (Native)</li>
+                            <li>English (Fluent | B2+/C1)</li>
+                        </ul>
+                    </section>
+                </div>
             </aside>
 
             <!-- Content -->
             <section>
-                <!-- Deutsch -->
-                <div id="lang-de">
+                <!-- German Version -->
+                <div id="lang-de-content">
                     <section class="card">
                         <h2><i class="fa-solid fa-user"></i> Über mich</h2>
                         <p>
@@ -622,16 +713,16 @@
                                         <div class="skill-items">
                                             <span>Erworbene Kenntnisse:</span>
                                             <ul class="tags" style="display: contents">
-                                                <li>REST-APIs</li>
+                                                <li>REST</li>
                                                 <li>Datenbanken</li>
                                                 <li>Node.js</li>
                                                 <li>TypeScript</li>
                                                 <li>PHP</li>
-                                                <li>NoSQL</li>
-                                                <li>SQL</li>
                                                 <li>JSON</li>
+                                                <li>SQL</li>
+                                                <li>NoSQL</li>
                                                 <li>HTML</li>
-                                                <li>Swagger</li>
+                                                <li>OpenApi</li>
                                                 <li>Scrum</li>
                                                 <li>Git</li>
                                                 <li>Docker</li>
@@ -808,8 +899,8 @@
                     </section>
                 </div>
 
-                <!-- English -->
-                <div id="lang-en" class="hidden">
+                <!-- English Version -->
+                <div id="lang-en-content" class="hidden">
                     <section class="card">
                         <h2><i class="fa-solid fa-user"></i> About Me</h2>
                         <p>
@@ -855,11 +946,11 @@
                                                 <li>Node.js</li>
                                                 <li>TypeScript</li>
                                                 <li>PHP</li>
-                                                <li>NoSQL</li>
-                                                <li>SQL</li>
                                                 <li>JSON</li>
+                                                <li>SQL</li>
+                                                <li>NoSQL</li>
                                                 <li>HTML</li>
-                                                <li>Swagger</li>
+                                                <li>OpenApi</li>
                                                 <li>Scrum</li>
                                                 <li>Git</li>
                                                 <li>Docker</li>
@@ -1041,7 +1132,7 @@
 
         <script>
             // Set current year in footer
-            document.getElementById('year').textContent = new Date().getFullYear();
+            document.getElementById('year').textContent = new Date().getFullYear().toString();
 
             // Function to initialize all animations with IntersectionObserver
             function initTimelineAnimations() {
@@ -1062,8 +1153,8 @@
                         });
                     },
                     {
-                        threshold: 0.1,
-                        rootMargin: '0px 0px -50px 0px',
+                        threshold: 0.01,
+                        rootMargin: '0px 0px -5% 0px',
                     },
                 );
 
@@ -1102,6 +1193,8 @@
             document.querySelector('#langToggle').addEventListener('click', () => {
                 document.getElementById('lang-de').classList.toggle('hidden');
                 document.getElementById('lang-en').classList.toggle('hidden');
+                document.getElementById('lang-de-content').classList.toggle('hidden');
+                document.getElementById('lang-en-content').classList.toggle('hidden');
 
                 initTimelineAnimations();
             });
