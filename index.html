@@ -158,6 +158,40 @@
                 background: var(--accent);
                 height: 100%;
                 border-radius: 8px;
+                transition: width 1.5s ease-out;
+            }
+            .emptyBar {
+                width: 0 !important;
+            }
+            .width-10 {
+                width: 10%;
+            }
+            .width-20 {
+                width: 20%;
+            }
+            .width-30 {
+                width: 30%;
+            }
+            .width-40 {
+                width: 40%;
+            }
+            .width-50 {
+                width: 50%;
+            }
+            .width-60 {
+                width: 60%;
+            }
+            .width-70 {
+                width: 70%;
+            }
+            .width-80 {
+                width: 80%;
+            }
+            .width-90 {
+                width: 90%;
+            }
+            .width-100 {
+                width: 100%;
             }
 
             /* Animations */
@@ -181,14 +215,14 @@
                 top: 0;
                 left: 0.6rem;
                 width: 6px;
-                height: 0;
+                height: 100%;
                 border-radius: 3px;
                 background: linear-gradient(to bottom, var(--accent) 0%, rgba(59, 130, 246, 0.2) 100%);
                 transition: height 1.5s ease-out;
                 transform-origin: top;
             }
-            .timeline.animate::before {
-                height: 100%;
+            .timeline.emptyBar::before {
+                height: 0;
             }
 
             /* Initial hidden state for all animated elements */
@@ -437,61 +471,81 @@
                             <li>
                                 <div>
                                     <i class="fa-brands fa-js"></i><span>JavaScript | TypeScript</span>
-                                    <div class="bar"><div class="barFill" style="width: 90%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-90 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-brands fa-php"></i><span>PHP</span>
-                                    <div class="bar"><div class="barFill" style="width: 80%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-80 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-database"></i><span>NoSQL</span>
-                                    <div class="bar"><div class="barFill" style="width: 90%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-90 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-database"></i><span>SQL</span>
-                                    <div class="bar"><div class="barFill" style="width: 80%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-80 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-brands fa-java"></i><span>Java</span>
-                                    <div class="bar"><div class="barFill" style="width: 40%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-40 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-brands fa-python"></i><span>Python</span>
-                                    <div class="bar"><div class="barFill" style="width: 30%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-30 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-file-code"></i><span>JSON</span>
-                                    <div class="bar"><div class="barFill" style="width: 90%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-90 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-brands fa-html5"></i><span>HTML</span>
-                                    <div class="bar"><div class="barFill" style="width: 50%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-50 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-brands fa-git-alt"></i><span>Git</span>
-                                    <div class="bar"><div class="barFill" style="width: 70%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-70 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-brands fa-docker"></i><span>Docker</span>
-                                    <div class="bar"><div class="barFill" style="width: 40%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-40 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
@@ -503,25 +557,33 @@
                             <li>
                                 <div>
                                     <i class="fa-solid fa-people-group"></i><span>Teamfähigkeit</span>
-                                    <div class="bar"><div class="barFill" style="width: 100%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-100 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-book-open"></i><span>Lernbereitschaft</span>
-                                    <div class="bar"><div class="barFill" style="width: 100%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-100 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-check-circle"></i><span>Zuverlässigkeit</span>
-                                    <div class="bar"><div class="barFill" style="width: 100%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-100 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-lightbulb"></i><span>Problemlösung</span>
-                                    <div class="bar"><div class="barFill" style="width: 100%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-100 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
@@ -569,61 +631,81 @@
                             <li>
                                 <div>
                                     <i class="fa-brands fa-js"></i><span>JavaScript | TypeScript</span>
-                                    <div class="bar"><div class="barFill" style="width: 90%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-90 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-brands fa-php"></i><span>PHP</span>
-                                    <div class="bar"><div class="barFill" style="width: 80%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-80 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-database"></i><span>NoSQL</span>
-                                    <div class="bar"><div class="barFill" style="width: 90%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-90 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-database"></i><span>SQL</span>
-                                    <div class="bar"><div class="barFill" style="width: 80%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-80 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-brands fa-java"></i><span>Java</span>
-                                    <div class="bar"><div class="barFill" style="width: 40%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-40 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-brands fa-python"></i><span>Python</span>
-                                    <div class="bar"><div class="barFill" style="width: 30%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-30 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-file-code"></i><span>JSON</span>
-                                    <div class="bar"><div class="barFill" style="width: 90%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-90 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-brands fa-html5"></i><span>HTML</span>
-                                    <div class="bar"><div class="barFill" style="width: 50%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-50 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-brands fa-git-alt"></i><span>Git</span>
-                                    <div class="bar"><div class="barFill" style="width: 70%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-70 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-brands fa-docker"></i><span>Docker</span>
-                                    <div class="bar"><div class="barFill" style="width: 40%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-40 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
@@ -635,25 +717,33 @@
                             <li>
                                 <div>
                                     <i class="fa-solid fa-people-group"></i><span>Teamwork</span>
-                                    <div class="bar"><div class="barFill" style="width: 100%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-100 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-book-open"></i><span>Willingness to Learn</span>
-                                    <div class="bar"><div class="barFill" style="width: 100%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-100 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-check-circle"></i><span>Reliability</span>
-                                    <div class="bar"><div class="barFill" style="width: 100%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-100 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-lightbulb"></i><span>Problem Solving</span>
-                                    <div class="bar"><div class="barFill" style="width: 100%"></div></div>
+                                    <div class="bar">
+                                        <div class="barFill width-100 emptyBar"></div>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
@@ -676,13 +766,13 @@
                     <section class="card">
                         <h2><i class="fa-solid fa-user"></i> Über mich</h2>
                         <p>
-                            Als leidenschaftlicher Backend-Softwareentwickler mit mehr als zwei Jahren Berufserfahrung bringe ich umfassendes
-                            Wissen in der Entwicklung von Backend-Lösungen mit. Bereits während meines Studiums habe ich wertvolle praktische
-                            Erfahrungen gesammelt, insbesondere in der Konzeption und Implementierung von RESTful-APIs mit Node.js und PHP sowie dem
-                            Management von SQL- und NoSQL-Datenbanken. Meine lernbereite und zuverlässige Arbeitsweise sowie die Freude an der Arbeit
-                            im Team, ermöglichen es mir Herausforderungen strategisch anzugehen und innovative Softwarelösungen zu realisieren. Zudem
-                            bin ich stets motiviert mich in neue Technologien einzuarbeiten und mein Fachwissen gezielt zu erweitern, um effizienten
-                            und qualitativ hochwertigen Code zu entwickeln.
+                            Als leidenschaftlicher Backend-Softwareentwickler mit mehr als zwei Jahren Berufserfahrung bringe ich umfassendes Wissen
+                            in der Entwicklung von Backend-Lösungen mit. Bereits während meines Studiums habe ich wertvolle praktische Erfahrungen
+                            gesammelt, insbesondere in der Konzeption und Implementierung von RESTful-APIs mit Node.js und PHP sowie dem Management
+                            von SQL- und NoSQL-Datenbanken. Meine lernbereite und zuverlässige Arbeitsweise sowie die Freude an der Arbeit im Team,
+                            ermöglichen es mir Herausforderungen strategisch anzugehen und innovative Softwarelösungen zu realisieren. Zudem bin ich
+                            stets motiviert mich in neue Technologien einzuarbeiten und mein Fachwissen gezielt zu erweitern, um effizienten und
+                            qualitativ hochwertigen Code zu entwickeln.
                         </p>
                     </section>
 
@@ -698,7 +788,7 @@
 
                     <section class="card">
                         <h2><i class="fa-solid fa-briefcase"></i> Berufliche Erfahrung</h2>
-                        <ol class="timeline">
+                        <ol class="timeline emptyBar">
                             <li class="timeline-item">
                                 <div class="timeline-head">
                                     <span><b>Softwareentwickler Backend (Werkstudent)</b> <br /><i>bei erkoware solutions GmbH (Kempten)</i></span>
@@ -776,7 +866,7 @@
 
                     <section class="card">
                         <h2><i class="fa-solid fa-graduation-cap"></i> Bildungsweg</h2>
-                        <ol class="timeline">
+                        <ol class="timeline emptyBar">
                             <li class="timeline-item">
                                 <div class="timeline-head">
                                     <span class="role"><b>Bachelor of Science</b> <i>an der Hochschule Kempten</i></span>
@@ -827,7 +917,7 @@
 
                     <section class="card">
                         <h2><i class="fa-solid fa-handshake-angle"></i> Engagement</h2>
-                        <ol class="timeline">
+                        <ol class="timeline emptyBar">
                             <li class="timeline-item">
                                 <div class="timeline-head">
                                     <span class="role"><b>Jugendbetreuer</b> <i>beim TSV Buchenberg</i></span>
@@ -929,7 +1019,7 @@
 
                     <section class="card">
                         <h2><i class="fa-solid fa-briefcase"></i> Professional Experience</h2>
-                        <ol class="timeline">
+                        <ol class="timeline emptyBar">
                             <li class="timeline-item">
                                 <div class="timeline-head">
                                     <span><b>Backend Software Developer (Working Student)</b> <br /><i>at erkoware solutions GmbH (Kempten)</i></span>
@@ -1001,7 +1091,7 @@
 
                     <section class="card">
                         <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
-                        <ol class="timeline">
+                        <ol class="timeline emptyBar">
                             <li class="timeline-item">
                                 <div class="timeline-head">
                                     <span class="role"><b>Bachelor of Science</b> <i>at Kempten University of Applied Sciences</i></span>
@@ -1052,7 +1142,7 @@
 
                     <section class="card">
                         <h2><i class="fa-solid fa-handshake-angle"></i> Volunteer Work</h2>
-                        <ol class="timeline">
+                        <ol class="timeline emptyBar">
                             <li class="timeline-item">
                                 <div class="timeline-head">
                                     <span class="role"><b>Youth Trainer</b> <i>at TSV Buchenberg</i></span>
@@ -1146,13 +1236,13 @@
                     el.classList.remove('visible');
                 });
 
-                // Common observer configuration
-                const observer = new IntersectionObserver(
+                // observer configuration for appearing sections
+                const observerAppearing = new IntersectionObserver(
                     (entries) => {
                         entries.forEach((entry) => {
                             if (entry.isIntersecting) {
                                 entry.target.classList.add('visible');
-                                observer.unobserve(entry.target);
+                                observerAppearing.unobserve(entry.target);
                             }
                         });
                     },
@@ -1161,17 +1251,28 @@
                         rootMargin: '0px 0px -5% 0px',
                     },
                 );
-
-                // Observe all elements that should animate
                 document.querySelectorAll('.timeline-item, section.card, .advantage-item').forEach((element, index) => {
-                    observer.observe(element);
+                    observerAppearing.observe(element);
                 });
 
-                // Handle timeline animation separately
-                document.querySelectorAll('.timeline').forEach((timeline) => {
-                    timeline.classList.remove('animate');
-                    void timeline.offsetWidth; // Force reflow
-                    timeline.classList.add('animate');
+                // observer configuration for animating bars
+                const observerAnimating = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.remove('emptyBar');
+                                observerAnimating.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.01,
+                        rootMargin: '0px 0px -1% 0px',
+                    },
+                );
+
+                document.querySelectorAll('.emptyBar').forEach((element) => {
+                    observerAnimating.observe(element);
                 });
             }
 
