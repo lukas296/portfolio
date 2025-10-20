@@ -15,7 +15,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
         <style>
             :root {
-                --radius: 18px;
+                --radius: 30px;
             }
 
             .hidden {
@@ -48,6 +48,7 @@
 
             body {
                 margin: 0;
+                font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
                 background: var(--bg);
                 color: var(--content);
                 font-family: system-ui, sans-serif;
@@ -104,7 +105,7 @@
             .actions button {
                 margin-left: 0.5rem;
                 padding: 0.5rem 1rem;
-                border-radius: 8px;
+                border-radius: var(--radius);
                 border: 1px solid var(--border);
                 background: transparent;
                 color: var(--content);
@@ -138,26 +139,48 @@
             /* Cards for content */
             .card {
                 background: var(--card);
-                padding: 18px;
+                padding: 18px 18px 8px 18px;
                 border-radius: var(--radius);
                 box-shadow: var(--shadow);
-                margin-bottom: 18px;
+                margin: 0px 0px 18px 0px;
+                transition:
+                        transform 0.3s ease,
+                        box-shadow 0.3s ease;
+            }
+
+            .tagCard {
+                background: var(--card);
+                padding: 18px 18px 18px 18px;
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                margin: 0px 0px 18px 0px;
                 transition:
                     transform 0.3s ease,
                     box-shadow 0.3s ease;
             }
 
+            .textCard {
+                background: var(--card);
+                padding: 18px 18px 8px 28px;
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                margin: 0px 0px 18px 0px;
+                transition:
+                        transform 0.3s ease,
+                        box-shadow 0.3s ease;
+            }
+
             /* Bars */
             .bar {
                 background: color-mix(in oklab, var(--content), transparent 90%);
-                border-radius: 8px;
+                border-radius: var(--radius);
                 height: 8px;
                 overflow: hidden;
             }
             .barFill {
                 background: var(--accent);
                 height: 100%;
-                border-radius: 8px;
+                border-radius: var(--radius);
                 transition: width 1.5s ease-out;
             }
             .emptyBar {
@@ -197,6 +220,8 @@
             /* Animations */
             .timeline-item.visible,
             section.card.visible,
+            section.tagCard.visible,
+            section.textCard.visible,
             .advantage-item.visible {
                 opacity: 1;
                 transform: translateY(0);
@@ -216,7 +241,7 @@
                 left: 0.6rem;
                 width: 6px;
                 height: 100%;
-                border-radius: 3px;
+                border-radius: var(--radius);
                 background: linear-gradient(to bottom, var(--accent) 0%, rgba(59, 130, 246, 0.2) 100%);
                 transition: height 1.5s ease-out;
                 transform-origin: top;
@@ -228,6 +253,8 @@
             /* Initial hidden state for all animated elements */
             .timeline-item,
             section.card,
+            section.tagCard,
+            section.textCard,
             .advantage-item {
                 opacity: 0;
                 transform: translateY(20px);
@@ -276,7 +303,7 @@
                 gap: 0.6rem;
                 background: var(--tags);
                 padding: 0.3rem 0.7rem;
-                border-radius: 999px;
+                border-radius: var(--radius);
                 transition:
                     transform 0.2s ease,
                     background 0.2s ease;
@@ -296,7 +323,7 @@
                 background: var(--tags);
                 margin: 0;
                 padding: 0.7rem 1rem;
-                border-radius: 999px;
+                border-radius: var(--radius);
                 transition:
                     transform 0.2s ease,
                     background 0.2s ease;
@@ -319,7 +346,7 @@
             .skill-items .tags li {
                 background: var(--tags);
                 padding: 2px 8px;
-                border-radius: 4px;
+                border-radius: var(--radius);
                 font-size: 0.9em;
                 white-space: nowrap;
             }
@@ -409,7 +436,7 @@
                 background: white;
                 color: var(--accent);
                 padding: 0.8rem 2rem;
-                border-radius: 50px;
+                border-radius: var(--radius);
                 text-decoration: none;
                 font-weight: 600;
                 margin-top: 1rem;
@@ -465,7 +492,7 @@
                         </ul>
                     </section>
 
-                    <section class="card">
+                    <section class="tagCard">
                         <h2>Technische Fähigkeiten</h2>
                         <ul class="competence-tags">
                             <li>
@@ -551,47 +578,47 @@
                         </ul>
                     </section>
 
-                    <section class="card">
+                    <section class="tagCard">
                         <h2>Persönliche Stärken</h2>
                         <ul class="competence-tags">
                             <li>
                                 <div>
                                     <i class="fa-solid fa-people-group"></i><span>Teamfähigkeit</span>
-                                    <div class="bar">
-                                        <div class="barFill width-100 emptyBar"></div>
-                                    </div>
+<!--                                    <div class="bar">-->
+<!--                                        <div class="barFill width-100 emptyBar"></div>-->
+<!--                                    </div>-->
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-book-open"></i><span>Lernbereitschaft</span>
-                                    <div class="bar">
-                                        <div class="barFill width-100 emptyBar"></div>
-                                    </div>
+<!--                                    <div class="bar">-->
+<!--                                        <div class="barFill width-100 emptyBar"></div>-->
+<!--                                    </div>-->
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-check-circle"></i><span>Zuverlässigkeit</span>
-                                    <div class="bar">
-                                        <div class="barFill width-100 emptyBar"></div>
-                                    </div>
+<!--                                    <div class="bar">-->
+<!--                                        <div class="barFill width-100 emptyBar"></div>-->
+<!--                                    </div>-->
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-lightbulb"></i><span>Problemlösung</span>
-                                    <div class="bar">
-                                        <div class="barFill width-100 emptyBar"></div>
-                                    </div>
+<!--                                    <div class="bar">-->
+<!--                                        <div class="barFill width-100 emptyBar"></div>-->
+<!--                                    </div>-->
                                 </div>
                             </li>
                         </ul>
                     </section>
 
-                    <section class="card iconList">
+                    <section class="tagCard iconList">
                         <h2>Sprachkenntnisse</h2>
-                        <ul class="tags">
+                        <ul class="competence-tags">
                             <li>Deutsch (Muttersprache)</li>
                             <li>Englisch (Fließend | B2+/C1)</li>
                         </ul>
@@ -625,7 +652,7 @@
                         </ul>
                     </section>
 
-                    <section class="card">
+                    <section class="tagCard">
                         <h2>Technical Skills</h2>
                         <ul class="competence-tags">
                             <li>
@@ -711,45 +738,45 @@
                         </ul>
                     </section>
 
-                    <section class="card">
+                    <section class="tagCard">
                         <h2>Competencies</h2>
-                        <ul class="competence-tags">
+                        <ul class="tags">
                             <li>
                                 <div>
                                     <i class="fa-solid fa-people-group"></i><span>Teamwork</span>
-                                    <div class="bar">
-                                        <div class="barFill width-100 emptyBar"></div>
-                                    </div>
+<!--                                    <div class="bar">-->
+<!--                                        <div class="barFill width-100 emptyBar"></div>-->
+<!--                                    </div>-->
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-book-open"></i><span>Willingness to Learn</span>
-                                    <div class="bar">
-                                        <div class="barFill width-100 emptyBar"></div>
-                                    </div>
+<!--                                    <div class="bar">-->
+<!--                                        <div class="barFill width-100 emptyBar"></div>-->
+<!--                                    </div>-->
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-check-circle"></i><span>Reliability</span>
-                                    <div class="bar">
-                                        <div class="barFill width-100 emptyBar"></div>
-                                    </div>
+<!--                                    <div class="bar">-->
+<!--                                        <div class="barFill width-100 emptyBar"></div>-->
+<!--                                    </div>-->
                                 </div>
                             </li>
                             <li>
                                 <div>
                                     <i class="fa-solid fa-lightbulb"></i><span>Problem Solving</span>
-                                    <div class="bar">
-                                        <div class="barFill width-100 emptyBar"></div>
-                                    </div>
+<!--                                    <div class="bar">-->
+<!--                                        <div class="barFill width-100 emptyBar"></div>-->
+<!--                                    </div>-->
                                 </div>
                             </li>
                         </ul>
                     </section>
 
-                    <section class="card iconList">
+                    <section class="tagCard iconList">
                         <h2>Language Skills</h2>
                         <ul class="tags">
                             <li>German (Native)</li>
@@ -763,7 +790,7 @@
             <section>
                 <!-- German Version -->
                 <div id="lang-de-content">
-                    <section class="card">
+                    <section class="textCard">
                         <h2><i class="fa-solid fa-user"></i> Über mich</h2>
                         <p>
                             Als leidenschaftlicher Backend-Softwareentwickler mit mehr als zwei Jahren Berufserfahrung bringe ich umfassendes Wissen
@@ -776,7 +803,7 @@
                         </p>
                     </section>
 
-                    <section class="card">
+                    <section class="textCard">
                         <h2><i class="fa-solid fa-rocket"></i> Zukunftsvision</h2>
                         <p>
                             In den kommenden Jahren möchte ich mich als erfahrener Backend-Entwickler etablieren, der nicht nur technische Lösungen
@@ -960,7 +987,7 @@
                         </ol>
                     </section>
 
-                    <section class="card">
+                    <section class="tagCard">
                         <h2><i class="fa-solid fa-star"></i> Meine Stärken</h2>
                         <div class="advantages-grid">
                             <div class="advantage-item">
@@ -986,7 +1013,7 @@
                         </div>
                     </section>
 
-                    <section class="card call-to-action">
+                    <section class="tagCard call-to-action">
                         <h2>Überzeugt?</h2>
                         <p>Dann freue ich mich auf Ihre Rückmeldung!</p>
                         <a href="#contact" class="button">Kontakt aufnehmen</a>
@@ -995,7 +1022,7 @@
 
                 <!-- English Version -->
                 <div id="lang-en-content" class="hidden">
-                    <section class="card">
+                    <section class="textCard">
                         <h2><i class="fa-solid fa-user"></i> About Me</h2>
                         <p>
                             As a passionate backend software developer with over two years of professional experience, I bring comprehensive knowledge
@@ -1007,7 +1034,7 @@
                         </p>
                     </section>
 
-                    <section class="card">
+                    <section class="textCard">
                         <h2><i class="fa-solid fa-rocket"></i> Future Vision</h2>
                         <p>
                             In the coming years, I aim to establish myself as an experienced backend developer who not only designs technical
@@ -1185,7 +1212,7 @@
                         </ol>
                     </section>
 
-                    <section class="card">
+                    <section class="tagCard">
                         <h2><i class="fa-solid fa-star"></i> My Strengths</h2>
                         <div class="advantages-grid">
                             <div class="advantage-item">
@@ -1211,7 +1238,7 @@
                         </div>
                     </section>
 
-                    <section class="card call-to-action">
+                    <section class="tagCard call-to-action">
                         <h2>Convinced?</h2>
                         <p>I look forward to hearing from you!</p>
                         <a href="#contact" class="button">Get in Touch</a>
@@ -1231,7 +1258,7 @@
             // Function to initialize all animations with IntersectionObserver
             function initTimelineAnimations() {
                 // Set transitions for all animated elements
-                document.querySelectorAll('section.card, .advantage-item').forEach((el) => {
+                document.querySelectorAll('section.card, section.tagCard,section.textCard, .advantage-item').forEach((el) => {
                     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                     el.classList.remove('visible');
                 });
@@ -1251,7 +1278,7 @@
                         rootMargin: '0px 0px -5% 0px',
                     },
                 );
-                document.querySelectorAll('.timeline-item, section.card, .advantage-item').forEach((element, index) => {
+                document.querySelectorAll('.timeline-item,section.card, section.tagCard,section.textCard, .advantage-item').forEach((element, index) => {
                     observerAppearing.observe(element);
                 });
 
