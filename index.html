@@ -48,10 +48,9 @@
 
             body {
                 margin: 0;
-                font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+                font-family: system-ui, Arial, 'Helvetica Neue', Helvetica, sans-serif;
                 background: var(--bg);
                 color: var(--content);
-                font-family: system-ui, sans-serif;
                 line-height: 1.6;
             }
 
@@ -142,7 +141,7 @@
                 padding: 18px 18px 8px 18px;
                 border-radius: var(--radius);
                 box-shadow: var(--shadow);
-                margin: 0px 0px 18px 0px;
+                margin: 0 0 18px 0;
                 transition:
                     transform 0.3s ease,
                     box-shadow 0.3s ease;
@@ -153,7 +152,7 @@
                 padding: 18px 18px 18px 18px;
                 border-radius: var(--radius);
                 box-shadow: var(--shadow);
-                margin: 0px 0px 18px 0px;
+                margin: 0 0 18px 0;
                 transition:
                     transform 0.3s ease,
                     box-shadow 0.3s ease;
@@ -164,7 +163,7 @@
                 padding: 18px 18px 8px 28px;
                 border-radius: var(--radius);
                 box-shadow: var(--shadow);
-                margin: 0px 0px 18px 0px;
+                margin: 0 0 18px 0;
                 transition:
                     transform 0.3s ease,
                     box-shadow 0.3s ease;
@@ -458,6 +457,7 @@
                 top: 0;
                 width: 100%;
                 height: 100%;
+                background-color: var(--tags);
                 backdrop-filter: blur(5px);
                 opacity: 0;
                 transition: opacity 0.3s ease-in-out;
@@ -472,7 +472,7 @@
             }
 
             .modal-content {
-                background-color: var(--card);
+                background-color: var(--bg);
                 margin: 40px 20px;
                 padding: 30px;
                 border-radius: var(--radius);
@@ -648,24 +648,16 @@
                         <h2>Persönliche Stärken</h2>
                         <ul class="competence-tags">
                             <li>
-                                <div>
-                                    <i class="fa-solid fa-people-group"></i><span>Teamfähigkeit</span>
-                                 </div>
+                                <div><i class="fa-solid fa-people-group"></i><span>Teamfähigkeit</span></div>
                             </li>
                             <li>
-                                <div>
-                                    <i class="fa-solid fa-book-open"></i><span>Lernbereitschaft</span>
-                                </div>
+                                <div><i class="fa-solid fa-book-open"></i><span>Lernbereitschaft</span></div>
                             </li>
                             <li>
-                                <div>
-                                    <i class="fa-solid fa-check-circle"></i><span>Zuverlässigkeit</span>
-                                </div>
+                                <div><i class="fa-solid fa-check-circle"></i><span>Zuverlässigkeit</span></div>
                             </li>
                             <li>
-                                <div>
-                                    <i class="fa-solid fa-lightbulb"></i><span>Problemlösung</span>
-                                </div>
+                                <div><i class="fa-solid fa-lightbulb"></i><span>Problemlösung</span></div>
                             </li>
                         </ul>
                     </section>
@@ -796,24 +788,16 @@
                         <h2>Competencies</h2>
                         <ul class="competence-tags">
                             <li>
-                                <div>
-                                    <i class="fa-solid fa-people-group"></i><span>Teamwork</span>
-                                 </div>
+                                <div><i class="fa-solid fa-people-group"></i><span>Teamwork</span></div>
                             </li>
                             <li>
-                                <div>
-                                    <i class="fa-solid fa-book-open"></i><span>Willingness to Learn</span>
-                                 </div>
+                                <div><i class="fa-solid fa-book-open"></i><span>Willingness to Learn</span></div>
                             </li>
                             <li>
-                                <div>
-                                    <i class="fa-solid fa-check-circle"></i><span>Reliability</span>
-                                </div>
+                                <div><i class="fa-solid fa-check-circle"></i><span>Reliability</span></div>
                             </li>
                             <li>
-                                <div>
-                                    <i class="fa-solid fa-lightbulb"></i><span>Problem Solving</span>
-                                </div>
+                                <div><i class="fa-solid fa-lightbulb"></i><span>Problem Solving</span></div>
                             </li>
                         </ul>
                     </section>
@@ -1389,11 +1373,9 @@
                         rootMargin: '0px 0px -3% 0px',
                     },
                 );
-                document
-                    .querySelectorAll('.timeline-item,section.card, section.tagCard,section.textCard, .advantage-item')
-                    .forEach((element, index) => {
-                        observerAppearing.observe(element);
-                    });
+                document.querySelectorAll('.timeline-item,section.card, section.tagCard,section.textCard, .advantage-item').forEach((element) => {
+                    observerAppearing.observe(element);
+                });
 
                 // observer configuration for animating bars
                 const observerAnimating = new IntersectionObserver(
