@@ -71,17 +71,52 @@ document.getElementById('homeLink').addEventListener('click', function (event) {
 // Theme toggle
 document.querySelector('#themeToggle').addEventListener('click', () => {
     const html = document.documentElement;
-    html.dataset.theme = html.dataset.theme === 'dark' ? 'light' : 'dark';
+    const themeToggle = document.querySelector('#themeToggle i');
+
+    if (html.dataset.theme === 'dark') {
+        html.dataset.theme = 'light';
+        themeToggle.classList.remove('fa-sun');
+        themeToggle.classList.add('fa-moon');
+    } else {
+        html.dataset.theme = 'dark';
+        themeToggle.classList.remove('fa-moon');
+        themeToggle.classList.add('fa-sun');
+    }
 });
+
+// Initialize theme icon based on current theme
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.querySelector('#themeToggle i');
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (isDarkMode) {
+        themeToggle.classList.remove('fa-moon');
+        themeToggle.classList.add('fa-sun');
+    }
+});
+
+// Function to update language button text
+function updateLanguageButton(isGerman) {
+    const button = document.querySelector('#langToggle');
+    button.innerHTML = isGerman ? '<i class="fa-solid fa-earth"></i> DE | EN' : '<i class="fa-solid fa-earth"></i> EN | DE';
+}
 
 // Language toggle
 document.querySelector('#langToggle').addEventListener('click', () => {
+    const isGerman = document.getElementById('lang-de').classList.contains('hidden');
     document.getElementById('lang-de').classList.toggle('hidden');
     document.getElementById('lang-en').classList.toggle('hidden');
     document.getElementById('lang-de-content').classList.toggle('hidden');
     document.getElementById('lang-en-content').classList.toggle('hidden');
 
+    updateLanguageButton(!isGerman);
     initTimelineAnimations();
+});
+
+// Initialize button text on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const isGerman = !document.getElementById('lang-de').classList.contains('hidden');
+    updateLanguageButton(isGerman);
 });
 
 // Modal stuff
